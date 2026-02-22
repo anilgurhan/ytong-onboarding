@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hoş Geldiniz | YTONG Türkiye</title>
+    <meta name="description" content="YTONG Türkiye çalışan oryantasyon portalı. Şirketimizi tanıyın." />
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ytong: {
+                            yellow: '#F5C400',
+                            gold: '#E6B800',
+                            dark: '#1A1A1A',
+                            slate: '#1E2535',
+                            mid: '#2D3748',
+                            light: '#F7F7F5',
+                        }
+                    },
+                    fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui'] }
+                }
+            }
+        };
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* ── Scroll reveal ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity .65s ease, transform .65s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* ── Hero gradient ── */
+        .hero-bg {
+            background: linear-gradient(135deg, #0d0d0d 0%, #1a1a2e 45%, #16213e 100%);
+        }
+
+        /* ── Yellow accent line ── */
+        .accent-line {
+            width: 48px;
+            height: 4px;
+            background: #F5C400;
+            border-radius: 9999px;
+        }
+
+        /* ── Nav active ── */
+        .nav-active {
+            color: #F5C400 !important;
+        }
+
+        /* ── Accordion ── */
+        .acc-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .4s ease;
+        }
+
+        .acc-body.open {
+            max-height: 500px;
+        }
+
+        /* ── Stat bar ── */
+        .stat-bar-fill {
+            transition: width 1.4s cubic-bezier(.4, 0, .2, 1);
+        }
+
+        /* ── Chat bubbles ── */
+        .chat-bot {
+            background: #F3F4F6;
+            border-radius: 0 14px 14px 14px;
+        }
+
+        .chat-user {
+            background: #F5C400;
+            color: #1A1A1A;
+            border-radius: 14px 14px 0 14px;
+        }
+
+        /* ── Scrollbar ── */
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 9999px;
+        }
+
+        /* ── Card hover border ── */
+        .dept-card:hover {
+            border-color: #F5C400;
+        }
+
+        /* ── Factory card ── */
+        .factory-card:hover .factory-icon {
+            background: #F5C400;
+        }
+
+        .factory-card:hover .factory-icon svg {
+            color: #1A1A1A;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        .hero-content {
+            animation: fadeUp .9s ease both;
+        }
+    </style>
+</head>
+
+<body class="bg-ytong-light text-ytong-dark antialiased">
+
+    <!-- ══════════════════════════════════
+     NAVBAR
+══════════════════════════════════ -->
+    <header id="navbar"
+        class="fixed top-0 left-0 right-0 z-50 bg-ytong-dark/95 backdrop-blur-md border-b border-white/10 shadow-lg transition-all duration-300">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+
+            <!-- Logo area -->
+            <!-- Replace with official YTONG logo from ytong.com.tr -->
+            <a href="#hero" class="flex items-center gap-3">
+                <div class="flex items-center justify-center w-10 h-10 rounded-lg bg-ytong-yellow">
+                    <span class="font-black text-ytong-dark text-sm tracking-tighter leading-none">YT</span>
+                </div>
+                <div class="leading-tight">
+                    <p class="font-extrabold text-white text-base tracking-wide leading-none">YTONG</p>
+                    <p class="text-ytong-yellow text-[9px] font-semibold tracking-widest uppercase leading-none mt-0.5">
+                        Türkiye</p>
+                </div>
+            </a>
+
+            <!-- Desktop nav -->
+            <ul class="hidden md:flex items-center gap-6 text-sm font-medium text-white/70">
+                <li><a href="#about" class="nav-link hover:text-ytong-yellow transition-colors">Hakkımızda</a></li>
+                <li><a href="#stats" class="nav-link hover:text-ytong-yellow transition-colors">Rakamlar</a></li>
+                <li><a href="#depts" class="nav-link hover:text-ytong-yellow transition-colors">Birimler</a></li>
+                <li><a href="#factories" class="nav-link hover:text-ytong-yellow transition-colors">Fabrikalar</a></li>
+                <li><a href="#benefits" class="nav-link hover:text-ytong-yellow transition-colors">Çalışan Deneyimi</a>
+                </li>
+                <li><a href="#video" class="nav-link hover:text-ytong-yellow transition-colors">Kurumsal Video</a></li>
+            </ul>
+
+            <!-- CTA + hamburger -->
+            <div class="flex items-center gap-3">
+                <a href="#depts"
+                    class="hidden md:inline-flex items-center px-4 py-2 rounded-lg bg-ytong-yellow text-ytong-dark text-sm font-bold hover:bg-ytong-gold transition-colors shadow">
+                    Keşfet
+                </a>
+                <button id="menuBtn" aria-label="Menüyü aç/kapat"
+                    class="md:hidden flex flex-col justify-center items-center w-9 h-9 rounded-lg hover:bg-white/10 transition-colors gap-1.5">
+                    <span class="block w-5 h-0.5 bg-white transition-all duration-300"></span>
+                    <span class="block w-5 h-0.5 bg-white transition-all duration-300"></span>
+                    <span class="block w-5 h-0.5 bg-white transition-all duration-300"></span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-ytong-dark/98 border-t border-white/10">
+            <ul class="flex flex-col px-4 py-3 gap-1 text-sm font-medium text-white/80">
+                <li><a href="#about"
+                        class="mobile-link block py-2 px-3 rounded-lg hover:bg-white/10 hover:text-ytong-yellow">Hakkımızda</a>
+                </li>
+                <li><a href="#stats"
+                        class="mobile-link block py-2 px-3 rounded-lg hover:bg-white/10 hover:text-ytong-yellow">Rakamlar</a>
+                </li>
+                <li><a href="#depts"
+                        class="mobile-link block py-2 px-3 rounded-lg hover:bg-white/10 hover:text-ytong-yellow">Birimler</a>
+                </li>
+                <li><a href="#factories"
+                        class="mobile-link block py-2 px-3 rounded-lg hover:bg-white/10 hover:text-ytong-yellow">Fabrikalar</a>
+                </li>
+                <li><a href="#benefits"
+                        class="mobile-link block py-2 px-3 rounded-lg hover:bg-white/10 hover:text-ytong-yellow">Çalışan
+                        Deneyimi</a></li>
+                <li><a href="#video"
+                        class="mobile-link block py-2 px-3 rounded-lg hover:bg-white/10 hover:text-ytong-yellow">Kurumsal
+                        Video</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- ══════════════════════════════════
+     HERO
+══════════════════════════════════ -->
+    <section id="hero" class="hero-bg min-h-screen flex items-center justify-center pt-16 relative overflow-hidden">
+        <!-- Decorative orbs -->
+        <div class="absolute top-1/4 -left-32 w-96 h-96 bg-ytong-yellow/10 rounded-full blur-3xl pointer-events-none">
+        </div>
+        <div class="absolute bottom-0 right-0 w-80 h-80 bg-ytong-yellow/5 rounded-full blur-3xl pointer-events-none">
+        </div>
+        <!-- Grid pattern overlay -->
+        <div class="absolute inset-0 opacity-5"
+            style="background-image:linear-gradient(rgba(245,196,0,.4) 1px,transparent 1px),linear-gradient(90deg,rgba(245,196,0,.4) 1px,transparent 1px);background-size:60px 60px">
+        </div>
+
+        <div class="relative z-10 max-w-5xl mx-auto text-center px-4 sm:px-6 hero-content">
+            <!-- Welcome badge -->
+            <div
+                class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-ytong-yellow/15 border border-ytong-yellow/30 text-ytong-yellow text-xs font-semibold mb-8 backdrop-blur-sm">
+                <span class="w-1.5 h-1.5 rounded-full bg-ytong-yellow animate-pulse"></span>
+                Çalışan Oryantasyon Portalı
+            </div>
+
+            <!-- Dynamic welcome -->
+            <h1
+                class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight tracking-tight mb-4">
+                Hoş Geldin,<br />
+                <span id="welcomeName" class="text-ytong-yellow">Değerli Çalışanımız</span> 🤝
+            </h1>
+
+            <p class="text-lg sm:text-xl text-white/60 max-w-2xl mx-auto mb-10 leading-relaxed">
+                YTONG Türkiye ailesine katıldığınız için mutluyuz. Türkiye'nin inşaat sektörünü geleceğe taşıyan
+                ekibimizin bir parçasısınız.
+            </p>
+
+            <!-- Company KPIs -->
+            <div class="flex flex-wrap justify-center gap-10 mb-10 text-center">
+                <div>
+                    <p class="text-3xl font-extrabold text-ytong-yellow">560</p>
+                    <p class="text-xs text-white/50 mt-1 uppercase tracking-widest">Çalışan</p>
+                </div>
+                <div>
+                    <p class="text-3xl font-extrabold text-ytong-yellow">5</p>
+                    <p class="text-xs text-white/50 mt-1 uppercase tracking-widest">Fabrika</p>
+                </div>
+                <div>
+                    <p class="text-3xl font-extrabold text-ytong-yellow">40+</p>
+                    <p class="text-xs text-white/50 mt-1 uppercase tracking-widest">Yıllık Tecrübe</p>
+                </div>
+                <div>
+                    <p class="text-3xl font-extrabold text-ytong-yellow">Xella</p>
+                    <p class="text-xs text-white/50 mt-1 uppercase tracking-widest">Global Grup</p>
+                </div>
+            </div>
+
+            <a href="#about"
+                class="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-ytong-yellow text-ytong-dark font-bold text-base shadow-xl hover:bg-ytong-gold hover:-translate-y-0.5 transition-all duration-200">
+                Şirketi Keşfet
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+            </a>
+        </div>
+
+        <!-- Scroll hint -->
+        <div
+            class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-white/30 text-xs animate-bounce">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+            Aşağı kaydır
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+     ABOUT YTONG
+══════════════════════════════════ -->
+    <section id="about" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Text -->
+                <div class="reveal">
+                    <div class="accent-line mb-6"></div>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-ytong-dark mb-6 leading-tight">
+                        Türkiye'nin İnşaat<br />Sektörünü Dönüştürüyoruz
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed mb-5">
+                        YTONG, dünyaca ünlü Xella grubunun Türkiye markası olarak, Gazbeton (AAC – Autoclaved Aerated
+                        Concrete) alanında Türkiye'nin lider üreticisidir. 1970'lerden bu yana hafif, dayanıklı ve
+                        sürdürülebilir yapı malzemeleri üretmektedir.
+                    </p>
+                    <p class="text-slate-600 leading-relaxed mb-8">
+                        Yenilikçi üretim süreçleri, enerji verimliliği ve çevre duyarlılığı ile YTONG; yapı sektörünün
+                        geleceğini bugünden şekillendirmektedir. Her ürünümüzde kalite, güvenilirlik ve
+                        sürdürülebilirlik ilkelerimizi yansıtıyoruz.
+                    </p>
+                    <div class="flex flex-wrap gap-3">
+                        <span
+                            class="px-4 py-2 rounded-full bg-ytong-yellow/10 text-ytong-dark text-sm font-semibold border border-ytong-yellow/30">🧱
+                            AAC / Gazbeton</span>
+                        <span
+                            class="px-4 py-2 rounded-full bg-ytong-yellow/10 text-ytong-dark text-sm font-semibold border border-ytong-yellow/30">🌿
+                            Sürdürülebilirlik</span>
+                        <span
+                            class="px-4 py-2 rounded-full bg-ytong-yellow/10 text-ytong-dark text-sm font-semibold border border-ytong-yellow/30">🌍
+                            Xella Group</span>
+                        <span
+                            class="px-4 py-2 rounded-full bg-ytong-yellow/10 text-ytong-dark text-sm font-semibold border border-ytong-yellow/30">🏭
+                            5 Üretim Tesisi</span>
+                    </div>
+                </div>
+                <!-- Cards -->
+                <div class="reveal grid grid-cols-2 gap-5">
+                    <div class="col-span-2 p-6 rounded-2xl bg-ytong-dark text-white shadow-xl">
+                        <div class="text-3xl mb-3">🏆</div>
+                        <h3 class="font-bold text-lg mb-2">Vizyon</h3>
+                        <p class="text-white/60 text-sm leading-relaxed">İnşaat sektöründe yenilikçi, sürdürülebilir ve
+                            katma değerli çözümler sunarak Türkiye'nin en güvenilir yapı malzemesi markası olmak.</p>
+                    </div>
+                    <div class="p-5 rounded-2xl bg-ytong-yellow/10 border border-ytong-yellow/30">
+                        <div class="text-2xl mb-2">🎯</div>
+                        <h3 class="font-semibold text-sm text-ytong-dark mb-1">Misyon</h3>
+                        <p class="text-slate-600 text-xs leading-relaxed">Güçlü, hafif ve enerji tasarruflu yapı
+                            malzemeleri ile yaşam kalitesini artırmak.</p>
+                    </div>
+                    <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+                        <div class="text-2xl mb-2">♻️</div>
+                        <h3 class="font-semibold text-sm text-ytong-dark mb-1">Çevre</h3>
+                        <p class="text-slate-600 text-xs leading-relaxed">Düşük karbon ayak izi, geri dönüştürülebilir
+                            malzeme ve enerji verimli üretim.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+     COMPANY STATISTICS
+══════════════════════════════════ -->
+    <section id="stats" class="py-24 bg-ytong-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <div class="accent-line mx-auto mb-6"></div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">YTONG Rakamlarla</h2>
+                <p class="text-white/50 max-w-xl mx-auto">Güçlü bir ekip, köklü bir deneyim.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <!-- Stat 1 -->
+                <div
+                    class="reveal text-center p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-ytong-yellow/50 transition-all duration-300">
+                    <p class="text-5xl font-black text-ytong-yellow mb-2">560</p>
+                    <p class="text-white font-semibold">Toplam Çalışan</p>
+                    <p class="text-white/40 text-xs mt-1">Türkiye genelinde</p>
+                </div>
+                <!-- Stat 2 -->
+                <div
+                    class="reveal text-center p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-ytong-yellow/50 transition-all duration-300">
+                    <p class="text-5xl font-black text-ytong-yellow mb-2">5</p>
+                    <p class="text-white font-semibold">Üretim Tesisi</p>
+                    <p class="text-white/40 text-xs mt-1">Antalya, Trakya, Çatalca, Dilovası, Bilecik</p>
+                </div>
+                <!-- Stat 3 -->
+                <div
+                    class="reveal text-center p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-ytong-yellow/50 transition-all duration-300">
+                    <p class="text-5xl font-black text-ytong-yellow mb-2">40+</p>
+                    <p class="text-white font-semibold">Yıllık Deneyim</p>
+                    <p class="text-white/40 text-xs mt-1">Türkiye'de lider marka</p>
+                </div>
+            </div>
+
+            <!-- Employee breakdown with progress bars -->
+            <div class="reveal max-w-2xl mx-auto bg-white/5 border border-white/10 rounded-2xl p-8">
+                <h3 class="text-white font-bold text-lg mb-8 text-center">Çalışan Yapısı</h3>
+
+                <!-- Blue Collar -->
+                <div class="mb-7">
+                    <div class="flex justify-between items-center mb-2">
+                        <div class="flex items-center gap-2">
+                            <span class="text-xl">🔵</span>
+                            <span class="text-white font-semibold text-sm">Mavi Yaka</span>
+                        </div>
+                        <span class="text-ytong-yellow font-bold text-sm">70% · 392 kişi</span>
+                    </div>
+                    <div class="h-3 bg-white/10 rounded-full overflow-hidden">
+                        <div class="stat-bar-fill h-full rounded-full bg-ytong-yellow" style="width:0%"
+                            data-target="70"></div>
+                    </div>
+                    <p class="text-white/40 text-xs mt-1.5">Üretim, bakım, lojistik ve saha personeli</p>
+                </div>
+
+                <!-- White Collar -->
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <div class="flex items-center gap-2">
+                            <span class="text-xl">⚪</span>
+                            <span class="text-white font-semibold text-sm">Beyaz Yaka</span>
+                        </div>
+                        <span class="text-white/70 font-bold text-sm">30% · 168 kişi</span>
+                    </div>
+                    <div class="h-3 bg-white/10 rounded-full overflow-hidden">
+                        <div class="stat-bar-fill h-full rounded-full bg-white/50" style="width:0%" data-target="30">
+                        </div>
+                    </div>
+                    <p class="text-white/40 text-xs mt-1.5">İdari, teknik, finans, pazarlama ve yönetim</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════ DEPARTMENTS ══════════════ -->
+    <section id="depts" class="py-24 bg-ytong-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <div class="accent-line mx-auto mb-6"></div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-ytong-dark mb-4">Birimlerimiz</h2>
+                <p class="text-slate-500 max-w-xl mx-auto">Detayları görmek için karta tıklayın.</p>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+                <!-- HR -->
+                <div class="dept-card rounded-2xl border-2 border-slate-200 bg-white overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer"
+                    data-dept="hr">
+                    <button class="acc-toggle w-full text-left p-5 flex items-center gap-4">
+                        <span
+                            class="flex-shrink-0 w-11 h-11 rounded-xl bg-pink-100 flex items-center justify-center text-xl">🧑‍💼</span>
+                        <div class="flex-1">
+                            <p class="font-bold text-ytong-dark">İnsan Kaynakları</p>
+                            <p class="text-xs text-slate-400 mt-0.5">Yetenek · Kültür · Gelişim</p>
+                        </div>
+                        <svg class="acc-chev w-5 h-5 text-slate-400 transition-transform duration-300" fill="none"
+                            stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="acc-body border-t border-slate-100">
+                        <div class="px-5 py-4 text-sm text-slate-600 space-y-1.5 leading-relaxed">
+                            <p><strong class="text-ytong-dark">Sorumlu:</strong> İK Direktörü</p>
+                            <p><strong class="text-ytong-dark">Kapsam:</strong> İşe alım, oryantasyon, performans
+                                yönetimi, eğitim, bordro</p>
+                            <p><strong class="text-ytong-dark">İletişim:</strong> ik@ytong.com.tr · İç hat: 200</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Production -->
+                <div class="dept-card rounded-2xl border-2 border-slate-200 bg-white overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer"
+                    data-dept="production">
+                    <button class="acc-toggle w-full text-left p-5 flex items-center gap-4">
+                        <span
+                            class="flex-shrink-0 w-11 h-11 rounded-xl bg-amber-100 flex items-center justify-center text-xl">🏭</span>
+                        <div class="flex-1">
+                            <p class="font-bold text-ytong-dark">Üretim</p>
+                            <p class="text-xs text-slate-400 mt-0.5">Fabrika · Kalite · İmalat</p>
+                        </div>
+                        <svg class="acc-chev w-5 h-5 text-slate-400 transition-transform duration-300" fill="none"
+                            stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="acc-body border-t border-slate-100">
+                        <div class="px-5 py-4 text-sm text-slate-600 space-y-1.5 leading-relaxed">
+                            <p><strong class="text-ytong-dark">Tesis Sayısı:</strong> 5 fabrika (Antalya, Trakya,
+                                Çatalca, Dilovası, Bilecik)</p>
+                            <p><strong class="text-ytong-dark">Standartlar:</strong> ISO 9001, ISO 14001, CE belgeli
+                                ürünler</p>
+                            <p><strong class="text-ytong-dark">Teknoloji:</strong> Otomatize AAC üretim hatları, dijital
+                                kalite kontrol</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sales -->
+                <div class="dept-card rounded-2xl border-2 border-slate-200 bg-white overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer"
+                    data-dept="sales">
+                    <button class="acc-toggle w-full text-left p-5 flex items-center gap-4">
+                        <span
+                            class="flex-shrink-0 w-11 h-11 rounded-xl bg-orange-100 flex items-center justify-center text-xl">📈</span>
+                        <div class="flex-1">
+                            <p class="font-bold text-ytong-dark">Satış ve Pazarlama</p>
+                            <p class="text-xs text-slate-400 mt-0.5">B2B · Marka · Büyüme</p>
+                        </div>
+                        <svg class="acc-chev w-5 h-5 text-slate-400 transition-transform duration-300" fill="none"
+                            stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="acc-body border-t border-slate-100">
+                        <div class="px-5 py-4 text-sm text-slate-600 space-y-1.5 leading-relaxed">
+                            <p><strong class="text-ytong-dark">Hedef Kitle:</strong> İnşaat firmaları, müteahhitler,
+                                bayiler, proje sahipleri</p>
+                            <p><strong class="text-ytong-dark">Araçlar:</strong> Salesforce CRM, dijital pazarlama, bayi
+                                ağı yönetimi</p>
+                            <p><strong class="text-ytong-dark">Merkez:</strong> Küçükyalı Genel Müdürlük</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Finance -->
+                <div class="dept-card rounded-2xl border-2 border-slate-200 bg-white overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer"
+                    data-dept="finance">
+                    <button class="acc-toggle w-full text-left p-5 flex items-center gap-4">
+                        <span
+                            class="flex-shrink-0 w-11 h-11 rounded-xl bg-green-100 flex items-center justify-center text-xl">💰</span>
+                        <div class="flex-1">
+                            <p class="font-bold text-ytong-dark">Finans</p>
+                            <p class="text-xs text-slate-400 mt-0.5">Muhasebe · Bütçe · Raporlama</p>
+                        </div>
+                        <svg class="acc-chev w-5 h-5 text-slate-400 transition-transform duration-300" fill="none"
+                            stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="acc-body border-t border-slate-100">
+                        <div class="px-5 py-4 text-sm text-slate-600 space-y-1.5 leading-relaxed">
+                            <p><strong class="text-ytong-dark">Sistem:</strong> SAP ERP, UFRS raporlama, Xella grup
+                                konsolidasyonu</p>
+                            <p><strong class="text-ytong-dark">Maaş Takvimi:</strong> Her ayın son iş günü</p>
+                            <p><strong class="text-ytong-dark">İletişim:</strong> finans@ytong.com.tr · İç hat: 300</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Procurement -->
+                <div class="dept-card rounded-2xl border-2 border-slate-200 bg-white overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer"
+                    data-dept="procurement">
+                    <button class="acc-toggle w-full text-left p-5 flex items-center gap-4">
+                        <span
+                            class="flex-shrink-0 w-11 h-11 rounded-xl bg-blue-100 flex items-center justify-center text-xl">📦</span>
+                        <div class="flex-1">
+                            <p class="font-bold text-ytong-dark">Satın Alma</p>
+                            <p class="text-xs text-slate-400 mt-0.5">Tedarik · Lojistik · Tedarikçi</p>
+                        </div>
+                        <svg class="acc-chev w-5 h-5 text-slate-400 transition-transform duration-300" fill="none"
+                            stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="acc-body border-t border-slate-100">
+                        <div class="px-5 py-4 text-sm text-slate-600 space-y-1.5 leading-relaxed">
+                            <p><strong class="text-ytong-dark">Kapsam:</strong> Hammadde, makine, hizmet ve lojistik
+                                alımları</p>
+                            <p><strong class="text-ytong-dark">Süreç:</strong> Merkezi satın alma, tedarikçi
+                                değerlendirme, SAP MM</p>
+                            <p><strong class="text-ytong-dark">İletişim:</strong> satin.alma@ytong.com.tr · İç hat: 400
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IT -->
+                <div class="dept-card rounded-2xl border-2 border-slate-200 bg-white overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer"
+                    data-dept="it">
+                    <button class="acc-toggle w-full text-left p-5 flex items-center gap-4">
+                        <span
+                            class="flex-shrink-0 w-11 h-11 rounded-xl bg-cyan-100 flex items-center justify-center text-xl">💻</span>
+                        <div class="flex-1">
+                            <p class="font-bold text-ytong-dark">Bilgi İşlem</p>
+                            <p class="text-xs text-slate-400 mt-0.5">Altyapı · Güvenlik · Destek</p>
+                        </div>
+                        <svg class="acc-chev w-5 h-5 text-slate-400 transition-transform duration-300" fill="none"
+                            stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="acc-body border-t border-slate-100">
+                        <div class="px-5 py-4 text-sm text-slate-600 space-y-1.5 leading-relaxed">
+                            <p><strong class="text-ytong-dark">Kapasam:</strong> SAP destek, altyapı, siber güvenlik, iş
+                                istasyonu yönetimi</p>
+                            <p><strong class="text-ytong-dark">Helpdesk:</strong> 08:30–17:30 (üretim tesisleri 7/24)
+                            </p>
+                            <p><strong class="text-ytong-dark">İletişim:</strong> it@ytong.com.tr · İç hat: 111</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════ FACTORIES ══════════════ -->
+    <section id="factories" class="py-24 bg-ytong-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <div class="accent-line mx-auto mb-6"></div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Üretim Tesislerimiz</h2>
+                <p class="text-white/50 max-w-xl mx-auto">Türkiye'nin dört bir yanına yayılmış beş modern fabrikamızla
+                    üretim gücümüzü artırıyoruz.</p>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+
+                <div
+                    class="factory-card reveal group p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-ytong-yellow/50 hover:bg-white/8 transition-all duration-300">
+                    <div
+                        class="factory-icon w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center mb-4 transition-all duration-300">
+                        <svg class="w-6 h-6 text-ytong-yellow transition-colors duration-300" fill="none"
+                            stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-white text-lg mb-1">Antalya Fabrikası</h3>
+                    <p class="text-white/40 text-xs uppercase tracking-wider mb-3">Akdeniz Bölgesi</p>
+                    <p class="text-white/60 text-sm leading-relaxed">Güney Türkiye'nin en büyük AAC üretim tesisi.
+                        Bölgesel bayi ve müteahhit ağını besleyen kritik üretim üssü.</p>
+                </div>
+
+                <div
+                    class="factory-card reveal group p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-ytong-yellow/50 hover:bg-white/8 transition-all duration-300">
+                    <div
+                        class="factory-icon w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center mb-4 transition-all duration-300">
+                        <svg class="w-6 h-6 text-ytong-yellow transition-colors duration-300" fill="none"
+                            stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-white text-lg mb-1">Trakya Fabrikası</h3>
+                    <p class="text-white/40 text-xs uppercase tracking-wider mb-3">Marmara Bölgesi</p>
+                    <p class="text-white/60 text-sm leading-relaxed">Avrupa pazarına en yakın konumda, ihracat
+                        kapasitesi güçlü modern tesis. Yüksek otomasyon düzeyine sahip.</p>
+                </div>
+
+                <div
+                    class="factory-card reveal group p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-ytong-yellow/50 hover:bg-white/8 transition-all duration-300">
+                    <div
+                        class="factory-icon w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center mb-4 transition-all duration-300">
+                        <svg class="w-6 h-6 text-ytong-yellow transition-colors duration-300" fill="none"
+                            stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-white text-lg mb-1">Çatalca Fabrikası</h3>
+                    <p class="text-white/40 text-xs uppercase tracking-wider mb-3">İstanbul</p>
+                    <p class="text-white/60 text-sm leading-relaxed">İstanbul'a yakın konumu ile lojistik avantaj
+                        sağlayan tesis. Metropol projelerinin temel tedarik noktası.</p>
+                </div>
+
+                <div
+                    class="factory-card reveal group p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-ytong-yellow/50 hover:bg-white/8 transition-all duration-300">
+                    <div
+                        class="factory-icon w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center mb-4 transition-all duration-300">
+                        <svg class="w-6 h-6 text-ytong-yellow transition-colors duration-300" fill="none"
+                            stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-white text-lg mb-1">Dilovası Fabrikası</h3>
+                    <p class="text-white/40 text-xs uppercase tracking-wider mb-3">Kocaeli</p>
+                    <p class="text-white/60 text-sm leading-relaxed">Kocaeli organize sanayi bölgesinde konumlanan
+                        tesis. Kuzey Marmara ve İç Anadolu'ya hizmet verir.</p>
+                </div>
+
+                <div
+                    class="factory-card reveal group p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-ytong-yellow/50 hover:bg-white/8 transition-all duration-300">
+                    <div
+                        class="factory-icon w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center mb-4 transition-all duration-300">
+                        <svg class="w-6 h-6 text-ytong-yellow transition-colors duration-300" fill="none"
+                            stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-white text-lg mb-1">Bilecik Fabrikası</h3>
+                    <p class="text-white/40 text-xs uppercase tracking-wider mb-3">Bilecik</p>
+                    <p class="text-white/60 text-sm leading-relaxed">Hammadde kaynaklarına yakın konumda, kurulu güç
+                        açısından en büyük tesislerimizden biri.</p>
+                </div>
+
+                <!-- HQ -->
+                <div
+                    class="factory-card reveal group p-6 rounded-2xl bg-ytong-yellow/10 border border-ytong-yellow/30 hover:border-ytong-yellow hover:bg-ytong-yellow/15 transition-all duration-300">
+                    <div
+                        class="factory-icon w-12 h-12 rounded-xl bg-ytong-yellow/20 flex items-center justify-center mb-4 transition-all duration-300">
+                        <svg class="w-6 h-6 text-ytong-yellow" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 21h18M9 21V9l6-6v18m-6-9h6" />
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-white text-lg mb-1">Genel Müdürlük</h3>
+                    <p class="text-ytong-yellow text-xs uppercase tracking-wider mb-3 font-semibold">Küçükyalı ·
+                        İstanbul</p>
+                    <p class="text-white/60 text-sm leading-relaxed">Tüm ticari, idari ve stratejik fonksiyonların
+                        yönetildiği merkez ofisimiz. Ulaşım: E-5 Küçükyalı çıkışı.</p>
+                </div>
+            </div>
+
+            <!-- Map placeholder -->
+            <div class="reveal rounded-2xl overflow-hidden border border-white/10 bg-white/5">
+                <!-- Google Maps embed: <iframe src="https://maps.google.com/..." class="w-full h-72" frameborder="0"></iframe> -->
+                <div class="h-64 flex flex-col items-center justify-center gap-3 text-white/40">
+                    <svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                    </svg>
+                    <p class="font-semibold text-sm">Türkiye Haritası</p>
+                    <p class="text-xs text-center">Bu alana Google Maps embed kodu eklenecek</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════ EMPLOYEE EXPERIENCE ══════════════ -->
+    <section id="benefits" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <div class="accent-line mx-auto mb-6"></div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-ytong-dark mb-4">Çalışan Deneyimi</h2>
+                <p class="text-slate-500 max-w-xl mx-auto">YTONG'da çalışmak; güçlü yan haklar, destekleyici kültür ve
+                    gelişim fırsatı demektir.</p>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-12 items-start">
+                <!-- Benefits list -->
+                <div class="reveal">
+                    <h3 class="font-bold text-ytong-dark text-xl mb-6 flex items-center gap-2"><span
+                            class="w-6 h-1 bg-ytong-yellow rounded inline-block"></span> Yan Haklar</h3>
+                    <div class="space-y-4">
+                        <div
+                            class="flex items-start gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100 hover:border-ytong-yellow/40 transition-colors">
+                            <div
+                                class="w-10 h-10 flex-shrink-0 rounded-lg bg-red-100 flex items-center justify-center text-lg">
+                                💊</div>
+                            <div>
+                                <p class="font-semibold text-ytong-dark text-sm">Özel Sağlık Sigortası</p>
+                                <p class="text-slate-500 text-xs mt-0.5">Poliçe kapsamı işe başlama tarihinden itibaren
+                                    geçerlidir.</p>
+                            </div>
+                        </div>
+                        <div
+                            class="flex items-start gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100 hover:border-ytong-yellow/40 transition-colors">
+                            <div
+                                class="w-10 h-10 flex-shrink-0 rounded-lg bg-yellow-100 flex items-center justify-center text-lg">
+                                🎁</div>
+                            <div>
+                                <p class="font-semibold text-ytong-dark text-sm">Bayram İkramiyeleri</p>
+                                <p class="text-slate-500 text-xs mt-0.5">Ramazan ve Kurban Bayramı dönemlerinde ikramiye
+                                    ödenir.</p>
+                            </div>
+                        </div>
+                        <div
+                            class="flex items-start gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100 hover:border-ytong-yellow/40 transition-colors">
+                            <div
+                                class="w-10 h-10 flex-shrink-0 rounded-lg bg-blue-100 flex items-center justify-center text-lg">
+                                🔥</div>
+                            <div>
+                                <p class="font-semibold text-ytong-dark text-sm">Yakacak Yardımı</p>
+                                <p class="text-slate-500 text-xs mt-0.5">Yıllık yakacak yardımı kış döneminden önce
+                                    hesaplara yatırılır.</p>
+                            </div>
+                        </div>
+                        <div
+                            class="flex items-start gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100 hover:border-ytong-yellow/40 transition-colors">
+                            <div
+                                class="w-10 h-10 flex-shrink-0 rounded-lg bg-green-100 flex items-center justify-center text-lg">
+                                👟</div>
+                            <div>
+                                <p class="font-semibold text-ytong-dark text-sm">Ayakkabı Yardımı</p>
+                                <p class="text-slate-500 text-xs mt-0.5">Üretim ve saha çalışanlarına iş güvenliği
+                                    ayakkabısı sağlanır.</p>
+                            </div>
+                        </div>
+                        <div
+                            class="flex items-start gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100 hover:border-ytong-yellow/40 transition-colors">
+                            <div
+                                class="w-10 h-10 flex-shrink-0 rounded-lg bg-purple-100 flex items-center justify-center text-lg">
+                                🏆</div>
+                            <div>
+                                <p class="font-semibold text-ytong-dark text-sm">Performans Primi</p>
+                                <p class="text-slate-500 text-xs mt-0.5">Yıllık hedef gerçekleşmelerine göre bireysel ve
+                                    kurumsal performans primi ödenir.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Work details -->
+                <div class="reveal space-y-6">
+                    <div class="p-6 rounded-2xl bg-ytong-dark text-white">
+                        <h3 class="font-bold text-lg mb-4 flex items-center gap-2">🕘 Çalışma Saatleri</h3>
+                        <div class="space-y-3 text-sm">
+                            <div class="flex justify-between items-center py-2 border-b border-white/10"><span
+                                    class="text-white/60">Mesai başlangıcı</span><span
+                                    class="font-bold text-ytong-yellow">08:30</span></div>
+                            <div class="flex justify-between items-center py-2 border-b border-white/10"><span
+                                    class="text-white/60">Mesai bitişi</span><span
+                                    class="font-bold text-ytong-yellow">17:30</span></div>
+                            <div class="flex justify-between items-center py-2 border-b border-white/10"><span
+                                    class="text-white/60">Öğle arası</span><span class="font-bold text-white">12:00 –
+                                    13:00</span></div>
+                            <div class="flex justify-between items-center py-2"><span class="text-white/60">Üretim
+                                    tesisleri</span><span class="font-bold text-white">Vardiya sistemi</span></div>
+                        </div>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-ytong-yellow/10 border border-ytong-yellow/30">
+                        <h3 class="font-bold text-ytong-dark text-lg mb-4 flex items-center gap-2">🚌 Servis İmkânı</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Fabrika lokasyonlarında çalışan personel için
+                            servis hizmetleri mevcuttur. Güzergâhlar ve saatler fabrika İK birimi tarafından belirlenir.
+                        </p>
+                        <p class="text-slate-500 text-xs mt-3">Detaylı bilgi için fabrika İK yetkilinizle iletişime
+                            geçin.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200">
+                        <h3 class="font-bold text-ytong-dark text-lg mb-3 flex items-center gap-2">🤝 Kurumsal Kültür
+                        </h3>
+                        <ul class="space-y-2 text-sm text-slate-600">
+                            <li class="flex items-center gap-2"><span
+                                    class="w-1.5 h-1.5 rounded-full bg-ytong-yellow flex-shrink-0"></span>Açık kapı
+                                politikası</li>
+                            <li class="flex items-center gap-2"><span
+                                    class="w-1.5 h-1.5 rounded-full bg-ytong-yellow flex-shrink-0"></span>Süregelen
+                                eğitim ve gelişim programları</li>
+                            <li class="flex items-center gap-2"><span
+                                    class="w-1.5 h-1.5 rounded-full bg-ytong-yellow flex-shrink-0"></span>İSG öncelikli
+                                güvenli çalışma ortamı</li>
+                            <li class="flex items-center gap-2"><span
+                                    class="w-1.5 h-1.5 rounded-full bg-ytong-yellow flex-shrink-0"></span>Çeşitlilik ve
+                                kapsayıcılık ilkeleri</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════ CORPORATE VIDEO ══════════════ -->
+    <section id="video" class="py-24 bg-ytong-dark">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
+            <div class="accent-line mx-auto mb-6"></div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">YTONG'ı Yakından Tanıyın</h2>
+            <p class="text-white/50 text-lg mb-10 max-w-2xl mx-auto">Fabrikalarımızı, çalışan deneyimimizi ve üretim
+                teknolojimizi keşfedin.</p>
+            <!-- Replace with official company video: <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" class="absolute inset-0 w-full h-full" frameborder="0" allowfullscreen></iframe> -->
+            <div
+                class="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 aspect-video bg-ytong-slate flex items-center justify-center">
+                <div class="flex flex-col items-center gap-5 text-center px-8">
+                    <div
+                        class="w-20 h-20 rounded-full bg-ytong-yellow flex items-center justify-center shadow-2xl cursor-pointer hover:scale-110 transition-transform duration-200">
+                        <svg class="w-8 h-8 text-ytong-dark ml-1" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="text-white font-bold text-xl">YTONG Kurumsal Tanıtım Videosu</p>
+                        <p class="text-white/40 text-sm mt-2">YouTube embed buraya eklenecek — resmi şirket videosu</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════ FOOTER ══════════════ -->
+    <footer class="bg-black border-t border-white/10 py-10">
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <!-- Replace with official YTONG logo from ytong.com.tr -->
+                <div class="flex items-center justify-center w-8 h-8 rounded-md bg-ytong-yellow"><span
+                        class="font-black text-ytong-dark text-xs">YT</span></div>
+                <span class="font-extrabold text-white tracking-wide">YTONG Türkiye</span>
+            </div>
+            <p class="text-white/30 text-sm text-center">© 2026 YTONG Türkiye · Bir Xella Grubu Şirketi · <a
+                    href="https://ytong.com.tr" target="_blank"
+                    class="hover:text-ytong-yellow transition-colors">ytong.com.tr</a></p>
+            <p class="text-white/20 text-xs">Oryantasyon Portalı v1.0</p>
+        </div>
+    </footer>
+
+    <!-- ══════════════ AI CHAT BUTTON + MODAL ══════════════
+         Claude API integration can be added here in future.
+         Endpoint: POST /api/chat with { message, context }
+    ═════════════════════════════════════════════════════ -->
+    <button id="chatBtn" aria-label="AI Asistanı aç"
+        class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-ytong-yellow text-ytong-dark shadow-2xl hover:bg-ytong-gold hover:scale-110 transition-all duration-200 flex items-center justify-center">
+        <svg id="chatIcon" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+        </svg>
+        <svg id="chatClose" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2"
+            viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+    </button>
+    <span id="chatDot"
+        class="fixed bottom-[72px] right-6 z-50 w-3 h-3 rounded-full bg-emerald-400 border-2 border-white"></span>
+
+    <div id="chatModal"
+        class="fixed bottom-24 right-6 z-50 hidden w-80 sm:w-96 rounded-2xl shadow-2xl border border-slate-200 bg-white overflow-hidden flex flex-col"
+        style="height:460px">
+        <div class="flex items-center gap-3 px-4 py-3 bg-ytong-dark text-white">
+            <div
+                class="w-8 h-8 rounded-full bg-ytong-yellow flex items-center justify-center text-xs font-black text-ytong-dark">
+                YT</div>
+            <div class="flex-1">
+                <p class="font-semibold text-sm">YTONG Asistanı</p>
+                <p class="text-xs text-white/50 flex items-center gap-1"><span
+                        class="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block"></span> Çevrimiçi</p>
+            </div>
+        </div>
+        <div id="chatMessages" class="flex-1 overflow-y-auto p-4 space-y-3 bg-slate-50">
+            <div class="flex gap-2 items-end">
+                <div
+                    class="w-7 h-7 flex-shrink-0 rounded-full bg-ytong-yellow flex items-center justify-center text-xs font-black text-ytong-dark">
+                    YT</div>
+                <div class="chat-bot px-3 py-2 text-sm text-slate-700 max-w-[80%]">👋 Merhaba! YTONG hakkında merak
+                    ettiğiniz her şeyi sorabilirsiniz.</div>
+            </div>
+            <div class="flex gap-2 items-end">
+                <div
+                    class="w-7 h-7 flex-shrink-0 rounded-full bg-ytong-yellow flex items-center justify-center text-xs font-black text-ytong-dark">
+                    YT</div>
+                <div class="chat-bot px-3 py-2 text-sm text-slate-700 max-w-[80%]">Yan haklar, fabrikalar, çalışma
+                    saatleri veya birimler hakkında sorularınızı yanıtlayabilirim. 🏭</div>
+            </div>
+        </div>
+        <!-- Suggestion chips -->
+        <div class="flex gap-2 px-4 py-2 overflow-x-auto bg-white border-t border-slate-100">
+            <button onclick="sendSuggestion(this)"
+                class="flex-shrink-0 text-xs px-3 py-1.5 rounded-full border border-ytong-yellow/50 text-ytong-dark hover:bg-ytong-yellow/10 transition-colors whitespace-nowrap">Yan
+                haklar</button>
+            <button onclick="sendSuggestion(this)"
+                class="flex-shrink-0 text-xs px-3 py-1.5 rounded-full border border-ytong-yellow/50 text-ytong-dark hover:bg-ytong-yellow/10 transition-colors whitespace-nowrap">Çalışma
+                saatleri</button>
+            <button onclick="sendSuggestion(this)"
+                class="flex-shrink-0 text-xs px-3 py-1.5 rounded-full border border-ytong-yellow/50 text-ytong-dark hover:bg-ytong-yellow/10 transition-colors whitespace-nowrap">Fabrikalar</button>
+            <button onclick="sendSuggestion(this)"
+                class="flex-shrink-0 text-xs px-3 py-1.5 rounded-full border border-ytong-yellow/50 text-ytong-dark hover:bg-ytong-yellow/10 transition-colors whitespace-nowrap">İK
+                iletişim</button>
+        </div>
+        <div class="flex items-center gap-2 px-3 py-3 border-t border-slate-200 bg-white">
+            <input id="chatInput" type="text" placeholder="Bir şey sorun..."
+                class="flex-1 text-sm px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-ytong-yellow/50" />
+            <button id="chatSend"
+                class="w-9 h-9 rounded-xl bg-ytong-yellow text-ytong-dark flex items-center justify-center hover:bg-ytong-gold transition-colors">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- ══════════════ JAVASCRIPT ══════════════ -->
+    <script>
+        /* ── 1. URL PERSONALIZATION ──────────────────────────────────────
+           ?name=Anil → "Anil"   |   no param → "Değerli Çalışanımız"
+        ──────────────────────────────────────────────────────────────── */
+        (function initPersonalization() {
+            const params = new URLSearchParams(window.location.search);
+            const name = params.get('name');
+            const el = document.getElementById('welcomeName');
+            if (name && name.trim()) el.textContent = decodeURIComponent(name.trim());
+        })();
+
+        /* ── 2. MOBILE HAMBURGER ─────────────────────────────────────── */
+        (function initMobileMenu() {
+            const btn = document.getElementById('menuBtn');
+            const menu = document.getElementById('mobileMenu');
+            btn.addEventListener('click', () => {
+                const open = !menu.classList.contains('hidden');
+                menu.classList.toggle('hidden', open);
+            });
+            document.querySelectorAll('.mobile-link').forEach(l =>
+                l.addEventListener('click', () => menu.classList.add('hidden'))
+            );
+        })();
+
+        /* ── 3. ACTIVE NAV ON SCROLL (IntersectionObserver) ─────────── */
+        (function initActiveNav() {
+            const links = document.querySelectorAll('.nav-link');
+            const io = new IntersectionObserver(entries => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        links.forEach(l => l.classList.remove('nav-active'));
+                        const a = document.querySelector(`.nav-link[href="#${e.target.id}"]`);
+                        if (a) a.classList.add('nav-active');
+                    }
+                });
+            }, { rootMargin: '-40% 0px -55% 0px' });
+            document.querySelectorAll('section[id]').forEach(s => io.observe(s));
+        })();
+
+        /* ── 4. SCROLL REVEAL ───────────────────────────────────────── */
+        (function initReveal() {
+            const io = new IntersectionObserver(entries => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+        })();
+
+        /* ── 5. STAT BAR ANIMATION ──────────────────────────────────── */
+        (function initStatBars() {
+            const io = new IntersectionObserver(entries => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        e.target.querySelectorAll('.stat-bar-fill').forEach(bar => {
+                            bar.style.width = bar.dataset.target + '%';
+                        });
+                        io.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.3 });
+            const statsSection = document.getElementById('stats');
+            if (statsSection) io.observe(statsSection);
+        })();
+
+        /* ── 6. DEPARTMENT ACCORDION ─────────────────────────────────── */
+        (function initAccordion() {
+            document.querySelectorAll('.acc-toggle').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const card = btn.closest('.dept-card');
+                    const body = card.querySelector('.acc-body');
+                    const chev = card.querySelector('.acc-chev');
+                    const open = body.classList.toggle('open');
+                    chev.style.transform = open ? 'rotate(180deg)' : 'rotate(0deg)';
+                });
+            });
+        })();
+
+        /* ── 7. AI CHAT MODAL ────────────────────────────────────────────
+           Claude API integration can be added here in future.
+           Replace getBotReply() with: fetch('/api/chat', { method:'POST', body: JSON.stringify({message}) })
+        ──────────────────────────────────────────────────────────────── */
+        (function initChat() {
+            const btn = document.getElementById('chatBtn');
+            const modal = document.getElementById('chatModal');
+            const icon = document.getElementById('chatIcon');
+            const close = document.getElementById('chatClose');
+            const dot = document.getElementById('chatDot');
+            const msgs = document.getElementById('chatMessages');
+            const input = document.getElementById('chatInput');
+            const send = document.getElementById('chatSend');
+
+            // Static mock responses (Turkish)
+            const responses = {
+                'yan hak': '🎁 Yan haklarımız: Özel sağlık sigortası, bayram ikramiyeleri, yakacak yardımı, ayakkabı yardımı ve performans primi.',
+                'sağlık': '💊 Tüm çalışanlarımıza işe başlama gününden itibaren özel sağlık sigortası sağlanmaktadır.',
+                'ikramiye': '🎁 Ramazan ve Kurban Bayramı dönemlerinde ikramiye ödenmektedir.',
+                'saat': '🕘 Çalışma saatlerimiz 08:30 – 17:30 arasındadır. Fabrikalar vardiya sistemiyle çalışmaktadır.',
+                'çalışma': '🕘 Genel müdürlükte çalışma saatimiz 08:30 – 17:30, öğle arası 12:00 – 13:00.',
+                'fabrika': '🏭 5 fabrikamız var: Antalya, Trakya, Çatalca, Dilovası ve Bilecik. Genel Müdürlük Küçükyalı\'da.',
+                'ik': '🧑‍💼 İK birimimiz: ik@ytong.com.tr · İç hat: 200. İS aynı zamanda bilet açmak için Xella HR Portal kullanılabilir.',
+                'servis': '🚌 Fabrika lokasyonlarında servis imkânı mevcuttur. Detay için fabrika İK\'nızla iletişime geçin.',
+                'prim': '🏆 Yıllık performans primleri bireysel ve kurumsal hedeflere göre belirlenir.',
+                'it': '💻 Bilgi İşlem: it@ytong.com.tr · İç hat: 111. SAP, altyapı ve iş istasyonu desteği sağlanmaktadır.',
+                'default': '🤖 Sorunuzu tam olarak karşılayamadım. Lütfen İK birimimizle (ik@ytong.com.tr) veya doğrudan yöneticinizle iletişime geçin!'
+            };
+
+            function getBotReply(text) {
+                const t = text.toLowerCase();
+                for (const [k, v] of Object.entries(responses)) if (t.includes(k)) return v;
+                return responses['default'];
+            }
+
+            function addMsg(text, isUser) {
+                const wrap = document.createElement('div');
+                wrap.className = `flex gap-2 items-end${isUser ? ' flex-row-reverse' : ''}`;
+                const av = document.createElement('div');
+                av.className = 'w-7 h-7 flex-shrink-0 rounded-full flex items-center justify-center text-xs font-black ' + (isUser ? 'bg-slate-200 text-slate-600' : 'bg-ytong-yellow text-ytong-dark');
+                av.textContent = isUser ? 'Sen' : 'YT';
+                const bub = document.createElement('div');
+                bub.className = `px-3 py-2 text-sm max-w-[80%] ${isUser ? 'chat-user' : 'chat-bot text-slate-700'}`;
+                bub.textContent = text;
+                wrap.appendChild(av); wrap.appendChild(bub);
+                msgs.appendChild(wrap);
+                msgs.scrollTop = msgs.scrollHeight;
+            }
+
+            function sendMsg(text) {
+                if (!text.trim()) return;
+                addMsg(text, true);
+                input.value = '';
+                setTimeout(() => addMsg(getBotReply(text), false), 650);
+            }
+
+            btn.addEventListener('click', () => {
+                const hidden = modal.classList.toggle('hidden');
+                icon.classList.toggle('hidden', !hidden);
+                close.classList.toggle('hidden', hidden);
+                dot.classList.add('hidden');
+                if (!hidden) input.focus();
+            });
+
+            send.addEventListener('click', () => sendMsg(input.value));
+            input.addEventListener('keydown', e => { if (e.key === 'Enter') sendMsg(input.value); });
+        })();
+
+        // Global helper for suggestion chip onclick
+        function sendSuggestion(btn) {
+            document.getElementById('chatInput').value = btn.textContent.trim();
+            document.getElementById('chatSend').click();
+        }
+    </script>
+</body>
+
+</html>
